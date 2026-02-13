@@ -1,7 +1,6 @@
 # src/scraper.py
-import re
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime
 from typing import List, Optional
 
 import requests
