@@ -67,6 +67,7 @@ def build_summary_prompt(
     threads: list[ThreadInfo],
     contents: list[str],
     previous_digests: list[str],
+    total_message_count: int = 0,
 ) -> str:
     """Build the Pass 2 prompt: summarize selected threads."""
     entries = []
@@ -104,7 +105,7 @@ Example:
 
 {chr(10).join(entries)}
 
-Write the digest now. End with a line: _Based on N messages from the last 24h_ where N is the total count."""
+Write the digest now. End with a line: _Based on {total_message_count} messages from the last 24h_"""
 
 
 def select_top_threads(
@@ -130,7 +131,7 @@ def summarize_threads(
     total_message_count: int,
 ) -> str:
     """Pass 2: Ask Claude to write summaries of the selected threads."""
-    prompt = build_summary_prompt(threads, contents, previous_digests)
+    prompt = build_summary_prompt(threads, contents, previous_digests, total_message_count)
     response = client.messages.create(
         model=MODEL,
         max_tokens=4096,
