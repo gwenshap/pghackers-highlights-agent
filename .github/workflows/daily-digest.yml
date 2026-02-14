@@ -3,8 +3,8 @@ name: Daily pgsql-hackers Digest
 
 on:
   schedule:
-    # Run at 8:00 AM UTC every day
-    - cron: '0 8 * * *'
+    # Run at 6:00 AM PST (2:00 PM UTC) every day
+    - cron: '0 14 * * *'
   workflow_dispatch: # Allow manual triggering
 
 permissions:
